@@ -48,8 +48,5 @@ public class Futbolista extends Persona{
         System.out.println("Asiste a una entrevista");
     }
     
-    
-    
-    
 }
 

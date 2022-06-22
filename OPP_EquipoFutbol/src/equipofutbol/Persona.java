@@ -9,13 +9,13 @@ public abstract class Persona {
     // Atributos
 
     protected String nombre;
-    protected String apellido;
+    protected String apellidos;
     protected int edad;
 
     // Constructor
     public Persona(String nombre, String apellido, int edad) {
         this.nombre = nombre;
-        this.apellido = apellido;
+        this.apellidos = apellido;
         this.edad = edad;
     }
 
@@ -24,8 +24,8 @@ public abstract class Persona {
         return nombre;
     }
 
-    public String getApellido() {
-        return apellido;
+    public String getApellidos() {
+        return apellidos;
     }
 
     public int getEdad() {
@@ -34,7 +34,7 @@ public abstract class Persona {
 
     // Metodos
     public void viajar() {
-        System.out.println("Viajar");
+        System.out.println("\tSale de viaje");
     }
 
     // Metodos abstractos

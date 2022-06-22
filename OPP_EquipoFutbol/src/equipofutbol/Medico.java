@@ -43,6 +43,6 @@ public class Medico extends Persona{
     }    
     
     public void curarLesion(){
-        System.out.println("Curas las lesiones fisicas de los jugadores");
+        System.out.println("Atiende las lesiones fisicas de los jugadores");
     }
 }

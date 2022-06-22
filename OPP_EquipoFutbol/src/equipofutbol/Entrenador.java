@@ -41,6 +41,6 @@ public class Entrenador extends Persona{
     }
     
     public void planificarEntrenamiento(){
-        System.out.println("Planifica y coordona entrenamiento");
+        System.out.println("Planifica y coordina entrenamiento");
     }    
 }
