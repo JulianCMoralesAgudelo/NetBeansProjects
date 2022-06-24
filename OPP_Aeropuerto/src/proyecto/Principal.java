@@ -222,9 +222,7 @@ public class Principal {
                 }
             }
         }
-
-        return null;
-
+        return listaVuelos;
     }
 
     public static void mostrarVuelosOrigenDestino(String origen, String destino, Aeropuerto aeropuertos[]) {
