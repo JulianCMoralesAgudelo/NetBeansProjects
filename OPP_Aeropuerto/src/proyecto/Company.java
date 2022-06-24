@@ -33,19 +33,20 @@ public class Company {
         return numVuelo;
     }
 
-    public Vuelo getVuelo(int indice) {
-        return listaVuelos[indice];
+    public Vuelo getVuelo(int i) {
+        return listaVuelos[i];
     }
 
     public Vuelo getVuelo(String id) {
-        Vuelo vuelo = null;
         boolean encontrado = false;
-        int iterador = 0;
-        while (!encontrado && iterador < listaVuelos.length) {
-            if (id.equals(listaVuelos[iterador].getIdentificador())) {
+        int i = 0;
+	Vuelo vuelo = null;
+        while (!encontrado && i < listaVuelos.length) {
+            if (id.equals(listaVuelos[i].getIdentificador())) {
                 encontrado = true;
-                iterador++;
-            }            
+                vuelo = listaVuelos[i];
+            }    
+            i++;
         }
         return vuelo;
     }

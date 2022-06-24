@@ -1,7 +1,4 @@
 package proyecto;
-
-import com.sun.org.apache.bcel.internal.generic.RETURN;
-
 /**
  *
  * @author julian
@@ -57,20 +54,20 @@ public class Vuelo {
         return numActualPasajeros;
     }
     
-    public Pasajero getPasajero(int posicion) {
-        return listaPasajeros[posicion];
+    public Pasajero getPasajero(int i) {
+        return listaPasajeros[i];
     }
     
     public Pasajero getPasajero(String pasaporte) {
         boolean encontrado = false;
-        int indice = 0;
+        int i = 0;
         Pasajero pasajero = null;
-        while (!encontrado && indice < listaPasajeros.length) {
-            if (pasaporte.equals(listaPasajeros[indice].getPasaporte())) {
+        while (!encontrado && i < listaPasajeros.length) {
+            if (pasaporte.equals(listaPasajeros[i].getPasaporte())) {
                 encontrado = true;
-                pasajero = listaPasajeros[indice];
+                pasajero = listaPasajeros[i];
             }
-            indice++;
+            i++;
         }
         return pasajero;
     }

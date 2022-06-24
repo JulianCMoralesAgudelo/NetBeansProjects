@@ -10,6 +10,7 @@ package proyecto;
  * @author julian
  */
 public class AeropuertoPublico extends Aeropuerto{
+    // Atributos
     private double subvencion;
     
     // Constructor
@@ -27,7 +28,9 @@ public class AeropuertoPublico extends Aeropuerto{
         super(nombre, ciudad, pais);
         this.subvencion = subvencion;
     }
-
+    
+    // Getters
+    
     public double getSubvencion() {
         return subvencion;
     }
