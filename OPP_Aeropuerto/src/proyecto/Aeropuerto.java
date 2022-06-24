@@ -1,10 +1,9 @@
-package proyecto;
-
 /**
  *
  * @author julian
  */
-public class Aeropuerto {
+
+ public class Aeropuerto {
 
     // Atributos
     private String nombre;

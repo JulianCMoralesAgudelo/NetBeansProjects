@@ -1,10 +1,11 @@
-package proyecto;
+
 
 /**
  *
  * @author julian
  */
-public class AeropuertoPrivado extends Aeropuerto {
+
+ public class AeropuertoPrivado extends Aeropuerto {
     // Atributos
 
     private String listaEmpresas[] = new String[10];

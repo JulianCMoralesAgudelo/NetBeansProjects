@@ -1,8 +1,6 @@
-package proyecto;
-
 /**
  *
- * @author julia
+ * @author julian
  */
 public class Company {
 
