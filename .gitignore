@@ -21,3 +21,7 @@ nb-configuration.xml
 *.ear
 
 /Aeropuerto/nbproject/private/
+/Excepciones/nbproject/private/
+/ExcepcionesFileNotFound/nbproject/private/
+/ExepcionesTryCatch/nbproject/private/
+/Excepcion0/nbproject/private/
