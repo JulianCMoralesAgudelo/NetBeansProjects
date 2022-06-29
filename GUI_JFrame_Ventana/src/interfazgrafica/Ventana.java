@@ -3,23 +3,30 @@ package interfazgrafica;
 import java.awt.Color;
 import java.awt.Font;
 import java.awt.Image;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
 import javax.swing.BorderFactory;
 import javax.swing.ButtonGroup;
 import javax.swing.DefaultComboBoxModel;
+import javax.swing.DefaultListModel;
 import javax.swing.ImageIcon;
 import javax.swing.JButton;
 import javax.swing.JCheckBox;
 import javax.swing.JComboBox;
 import javax.swing.JFrame;
 import javax.swing.JLabel;
+import javax.swing.JList;
 import javax.swing.JPanel;
+import javax.swing.JPasswordField;
 import javax.swing.JRadioButton;
 import javax.swing.JScrollPane;
+import javax.swing.JTable;
 import javax.swing.JTextArea;
 import javax.swing.JTextField;
 import javax.swing.JToggleButton;
 import javax.swing.ScrollPaneConstants;
 import javax.swing.SwingConstants;
+import javax.swing.table.DefaultTableModel;
 
 /**
  *
@@ -33,7 +40,7 @@ public class Ventana extends JFrame {
     public Ventana() {
         // Tamanño de la ventana.
         //setLocation(100, 200);
-        this.setSize(1000, 1000);
+        this.setSize(500, 500);
         // Edste metodo remplaza los dos metodos usados anteriormente.
         // (SetLocation,SetSize)
         //setBounds(100, 200, 500, 500);
@@ -57,14 +64,17 @@ public class Ventana extends JFrame {
         // Llamar metodo de inciar componentes
         // Cambiar color del panel
         // panel.setBackground(Color.GREEN);
-        //colocarBotones();
+        colocarBotones();
         //colocarEtiquetas();
         //colocarRadioBotones();
         //colocarBotonesDeActivacion();
         //colocarCajasDeTexto();
         //colocarAreasDeTexto();
         //casillasDeVerificacion();
-        colocarListasDesplegables();
+        //colocarListasDesplegables();
+        //colocarCampoClave();
+        //insertarTablas();
+        //inserterListas();
     }
 
     private void colocarEtiquetas() {
@@ -102,6 +112,7 @@ public class Ventana extends JFrame {
     }
 
     private void colocarBotones() {
+        /*
         // Boton de texto
         JButton boton = new JButton();
         // Establecer texto al boton
@@ -145,6 +156,66 @@ public class Ventana extends JFrame {
         botonBordes.setBorder(BorderFactory.createLineBorder(Color.BLACK, 3));
         // Agregar boton al panel
         panel.add(botonBordes);
+         */
+
+        // Agregar etiqueta
+        JLabel saludo = new JLabel("Ingrese su nombre");
+        // Posicionar etiqueta
+        saludo.setBounds(130, 50, 250, 40);
+        JLabel salida = new JLabel();
+        // Posicionar etiqueta
+        salida.setBounds(100, 200, 500, 60);
+        // Modificar texto etiqueta
+        saludo.setFont(
+                new Font("arial", 1, 20));
+        salida.setFont(
+                new Font("arial", 1, 20));
+        // Agregar etiqueta al panel
+        panel.add(saludo);
+        // Agregar etiqueta al panel
+        panel.add(salida);
+
+        // Caja de texto
+        JTextField cajaTexto;
+        cajaTexto = new JTextField();
+        // Posicionar caja
+        cajaTexto.setBounds(150, 100, 150, 40);
+        // Introducir texto
+        //System.out.println("Texto en la caja " + cajaTexto.getText());
+        // Agregar caja al panel
+        panel.add(cajaTexto);
+
+        // Boton de texto
+        JButton boton = new JButton();
+        // Establecer texto al boton
+        boton.setText(
+                "!Pulse aqui¡");
+        // Posicionar boton
+        boton.setBounds(
+                150, 150, 150, 40);
+        // Modificar texto boton
+        boton.setFont(
+                new Font("arial", 0, 15));
+        // Agregar boton al panel
+        panel.add(boton);
+
+        // Agregar evento actionlistener
+        ActionListener guardiaEventos = new ActionListener() {
+
+            @Override
+            public void actionPerformed(ActionEvent ae) {
+                if ((cajaTexto.getText().isEmpty())) {
+                    // Modificar texto a la etiqueta
+                    salida.setText("Debe de ingresar su nombre.");
+                } else {
+                    salida.setBounds(130, 200, 500, 60);
+                    // Modificar texto a la etiqueta
+                    salida.setText("Hola " + cajaTexto.getText());
+                }
+            }
+        };
+
+        boton.addActionListener(guardiaEventos);
     }
 
     private void colocarRadioBotones() {
@@ -317,4 +388,72 @@ public class Ventana extends JFrame {
         panel.add(listaDesplegable);
     }
 
+    private void colocarCampoClave() {
+        // Variables locales
+        String clave = "";
+        // Crear objeto campo
+        JPasswordField campoClave = new JPasswordField();
+        // Posicionar
+        campoClave.setBounds(20, 20, 150, 30);
+        // Establecer texto
+        campoClave.setText("Prueba");
+        // Obtener password y recorrer arreglo
+        for (int i = 0; i < campoClave.getPassword().length; i++) {
+            clave += campoClave.getPassword()[i];
+        }
+        // Imprimir
+        System.out.println(clave);
+        // Agregar al panel
+        panel.add(campoClave);
+    }
+
+    private void insertarTablas() {
+        // Crear objeto modelotabla
+        DefaultTableModel modeloTabla = new DefaultTableModel();
+        // Crear objeto tabla y se agrega el modelo.
+        JTable tabla = new JTable(modeloTabla);
+        // Posicionar tabla
+        tabla.setBounds(20, 20, 300, 200);
+        // Añador al panel
+        panel.add(tabla);
+        // Crear campos o columnas en el modelo
+        modeloTabla.addColumn("Nombre");
+        modeloTabla.addColumn("Edad");
+        modeloTabla.addColumn("Nacionalidad");
+        // Crear filas en el modelo
+        String[] persona = {"Julian", "38", "Colombiano"};
+        String[] persona2 = {"Yislea", "29", "Colombiana"};
+        String[] persona3 = {"Gilma", "65", "Colombiana"};
+        // Agregar arreglos al modelo como filas
+        modeloTabla.addRow(persona);
+        modeloTabla.addRow(persona2);
+        modeloTabla.addRow(persona3);
+        // Crear objeto JScrollPane vertical y horizontal a demanda
+        JScrollPane desplazamiento = new JScrollPane(tabla, ScrollPaneConstants.VERTICAL_SCROLLBAR_AS_NEEDED, ScrollPaneConstants.HORIZONTAL_SCROLLBAR_AS_NEEDED);
+        // Posicionar tabla
+        desplazamiento.setBounds(20, 20, 300, 200);
+        // Agregar JScrollPane al panel
+        panel.add(desplazamiento);
+    }
+
+    private void inserterListas() {
+        // Crear Modelo de lista
+        DefaultListModel modeloLista = new DefaultListModel();
+        // Añadir elementos al modelo
+        modeloLista.addElement(new Persona("Julian Morales", 38, "Colombiano"));
+        modeloLista.addElement(new Persona("Yisela Guzman", 29, "Colombiana"));
+        modeloLista.addElement(new Persona("Gilma Agudelo", 29, "Colombiana"));
+        // Crear lista y agregar el modelo aesta
+        JList lista = new JList(modeloLista);
+        // Posicionar lista
+        lista.setBounds(20, 20, 200, 300);
+        // Agregar al panel
+        panel.add(lista);
+        // Agregar desplazamiento
+        JScrollPane desplazamiento = new JScrollPane(lista, ScrollPaneConstants.VERTICAL_SCROLLBAR_AS_NEEDED, ScrollPaneConstants.HORIZONTAL_SCROLLBAR_AS_NEEDED);
+        // Posicionar tabla
+        desplazamiento.setBounds(20, 20, 200, 300);
+        // Agregar JScrollPane al panel
+        panel.add(desplazamiento);
+    }
 }
