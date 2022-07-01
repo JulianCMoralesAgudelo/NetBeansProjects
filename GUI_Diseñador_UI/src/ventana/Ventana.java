@@ -5,7 +5,11 @@
  */
 package ventana;
 
+import java.util.logging.Level;
+import java.util.logging.Logger;
 import javax.swing.DefaultComboBoxModel;
+import javax.swing.UIManager;
+import javax.swing.UnsupportedLookAndFeelException;
 import javax.swing.event.ListSelectionEvent;
 import javax.swing.event.ListSelectionListener;
 import javax.swing.table.DefaultTableModel;
@@ -15,18 +19,18 @@ import javax.swing.table.DefaultTableModel;
  * @author julia
  */
 public class Ventana extends javax.swing.JFrame {
-    
+
     private DefaultComboBoxModel<Persona> modelo = new DefaultComboBoxModel<Persona>();
     private DefaultTableModel modeloTabla = new DefaultTableModel();
-    
+
     public Ventana() {
         llenarModeloComboBox();
         agregarModeloTabla();
         initComponents();
         setLocationRelativeTo(null);
-        
+
     }
-    
+
     private void llenarModeloComboBox() {
         modelo.addElement(new Persona("Francisco Jose", "Giner Cuéllar", "FranciscoGiner@gmail.com", "3058947768", "Calle 81 # 57 - 43", "Avenida Caracas"));
         modelo.addElement(new Persona("León", "Vilalta Pedrosa", "LeónVilalta@gmail.com", "3203958866", "Carrera 50 # 42 - 18", "Manchester"));
@@ -39,7 +43,7 @@ public class Ventana extends javax.swing.JFrame {
         modelo.addElement(new Persona("Aura Socorro", "Villa Silva", "AuraVilla@gmail.com", "3138225599", "Calle 147 #18-97", "Centro Comercial Caobos local 20"));
         modelo.addElement(new Persona("Elías", "Borja Olmo", "ElíasBorja@gmail.com", "3142077661", "Avenida Suba 114 A - 55", "Suba"));
     }
-    
+
     private void agregarModeloTabla() {
         modeloTabla.addColumn("Nombres");
         modeloTabla.addColumn("Apellidos");
@@ -47,7 +51,7 @@ public class Ventana extends javax.swing.JFrame {
         modeloTabla.addColumn("Celular");
         modeloTabla.addColumn("Direccion");
         modeloTabla.addColumn("Barrio");
-        
+
     }
 
     /**
@@ -360,11 +364,25 @@ public class Ventana extends javax.swing.JFrame {
         //</editor-fold>
 
         /* Create and display the form */
+        try {
+            // cambiar apariencia
+            UIManager.setLookAndFeel("com.jtattoo.plaf.acryl.AcrylLookAndFeel");
+        } catch (ClassNotFoundException ex) {
+            //Logger.getLogger(Ventana.class.getName()).log(Level.SEVERE, null, ex);
+        } catch (InstantiationException ex) {
+            //Logger.getLogger(Ventana.class.getName()).log(Level.SEVERE, null, ex);
+        } catch (IllegalAccessException ex) {
+            //Logger.getLogger(Ventana.class.getName()).log(Level.SEVERE, null, ex);
+        } catch (UnsupportedLookAndFeelException ex) {
+            //Logger.getLogger(Ventana.class.getName()).log(Level.SEVERE, null, ex);
+        }
+
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
                 new Ventana().setVisible(true);
             }
         });
+
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
