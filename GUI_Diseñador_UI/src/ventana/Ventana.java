@@ -6,24 +6,48 @@
 package ventana;
 
 import javax.swing.DefaultComboBoxModel;
+import javax.swing.event.ListSelectionEvent;
+import javax.swing.event.ListSelectionListener;
+import javax.swing.table.DefaultTableModel;
 
 /**
  *
  * @author julia
  */
 public class Ventana extends javax.swing.JFrame {
-
-    private DefaultComboBoxModel modelo = new DefaultComboBoxModel();
-
+    
+    private DefaultComboBoxModel<Persona> modelo = new DefaultComboBoxModel<Persona>();
+    private DefaultTableModel modeloTabla = new DefaultTableModel();
+    
     public Ventana() {
         llenarModeloComboBox();
+        agregarModeloTabla();
         initComponents();
         setLocationRelativeTo(null);
         
     }
-
+    
     private void llenarModeloComboBox() {
-        modelo.addElement(new Persona("Julian Camilo", "Morales Agudelo", "juliancmorales@gmail.com", "3058937768", "Calle 81 # 57 - 43", "Araucarias 1"));
+        modelo.addElement(new Persona("Francisco Jose", "Giner Cuéllar", "FranciscoGiner@gmail.com", "3058947768", "Calle 81 # 57 - 43", "Avenida Caracas"));
+        modelo.addElement(new Persona("León", "Vilalta Pedrosa", "LeónVilalta@gmail.com", "3203958866", "Carrera 50 # 42 - 18", "Manchester"));
+        modelo.addElement(new Persona("Angelina", "Jódar", "AngelinaJódar@gmail.com", "3036448623", "Calle 45 # 31 - 11", "Avenida Pedro de Heredia"));
+        modelo.addElement(new Persona("Bárbara", "Bernat Palomo", "BárbaraBernat@gmail.com", "3006448825", "Diagonal 33 # 14 - 07", "Laureles"));
+        modelo.addElement(new Persona("Modesto", "Diéguez", "ModestoDiéguez@gmail.com", "3045449966", "Calle 30 # 51 - 18", "El Poblado"));
+        modelo.addElement(new Persona("Julia", "Nicolau Sosa", "JuliaNicolau@gmail.com", "3189642315", "Carrera 47 # 13 - 25", "Calatrava"));
+        modelo.addElement(new Persona("Yolanda", "Tejedor Arranz", "YolandaTejedor@gmail.com", "3175148037", "Av. Colombia #69145", "Laureles"));
+        modelo.addElement(new Persona("Vasco", "Parejo Hoz", "VascoParejo Hoz@gmail.com", "3053428143", " Cra. 32 #21, Medellín", " El Poblado"));
+        modelo.addElement(new Persona("Aura Socorro", "Villa Silva", "AuraVilla@gmail.com", "3138225599", "Calle 147 #18-97", "Centro Comercial Caobos local 20"));
+        modelo.addElement(new Persona("Elías", "Borja Olmo", "ElíasBorja@gmail.com", "3142077661", "Avenida Suba 114 A - 55", "Suba"));
+    }
+    
+    private void agregarModeloTabla() {
+        modeloTabla.addColumn("Nombres");
+        modeloTabla.addColumn("Apellidos");
+        modeloTabla.addColumn("Email");
+        modeloTabla.addColumn("Celular");
+        modeloTabla.addColumn("Direccion");
+        modeloTabla.addColumn("Barrio");
+        
     }
 
     /**
@@ -38,26 +62,25 @@ public class Ventana extends javax.swing.JFrame {
         panel = new javax.swing.JPanel();
         etiquetaPersona = new javax.swing.JLabel();
         comboPersonas = new javax.swing.JComboBox<>();
-        btnIsertarPersonas = new javax.swing.JButton();
+        botonIsertarPersonas = new javax.swing.JButton();
         scrollTabla = new javax.swing.JScrollPane();
         tabla = new javax.swing.JTable();
         jSeparator1 = new javax.swing.JSeparator();
         lblDatosPersona = new javax.swing.JLabel();
         lblNombres = new javax.swing.JLabel();
-        jtxtApellidos = new javax.swing.JTextField();
+        cajaApellidos = new javax.swing.JTextField();
         lblApellidos = new javax.swing.JLabel();
-        jtxtNombres = new javax.swing.JTextField();
-        jtxtEmail = new javax.swing.JTextField();
+        cajaNombres = new javax.swing.JTextField();
+        cajaEmail = new javax.swing.JTextField();
         lblNombres1 = new javax.swing.JLabel();
         lblApellidos1 = new javax.swing.JLabel();
-        jtxtCelular = new javax.swing.JTextField();
+        cajaCelular = new javax.swing.JTextField();
         lblNombres2 = new javax.swing.JLabel();
         lblBarrio = new javax.swing.JLabel();
-        jtxDireccion = new javax.swing.JTextField();
-        jtxtBarrio = new javax.swing.JTextField();
+        cajaDireccion = new javax.swing.JTextField();
+        cajaBarrio = new javax.swing.JTextField();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
-        setPreferredSize(new java.awt.Dimension(600, 700));
 
         panel.setPreferredSize(new java.awt.Dimension(600, 700));
 
@@ -66,25 +89,39 @@ public class Ventana extends javax.swing.JFrame {
 
         comboPersonas.setModel(modelo);
 
-        btnIsertarPersonas.setFont(new java.awt.Font("Arial", 0, 12)); // NOI18N
-        btnIsertarPersonas.setText("Insertar Persona");
-        btnIsertarPersonas.addActionListener(new java.awt.event.ActionListener() {
+        botonIsertarPersonas.setFont(new java.awt.Font("Arial", 0, 12)); // NOI18N
+        botonIsertarPersonas.setText("Insertar Persona");
+        botonIsertarPersonas.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btnIsertarPersonasActionPerformed(evt);
+                botonIsertarPersonasActionPerformed(evt);
             }
         });
 
-        tabla.setModel(new javax.swing.table.DefaultTableModel(
-            new Object [][] {
-                {null, null, null, null},
-                {null, null, null, null},
-                {null, null, null, null},
-                {null, null, null, null}
-            },
-            new String [] {
-                "Title 1", "Title 2", "Title 3", "Title 4"
+        tabla.setModel(modeloTabla);
+        ListSelectionListener guardiaSeleccion = new ListSelectionListener(){
+            @Override
+            public void valueChanged(ListSelectionEvent e){
+                if (e.getValueIsAdjusting()){
+                    int filaSeleccionada = tabla.getSelectedRow();
+                    // Guardar datos
+                    String nombres = (String) modeloTabla.getValueAt(filaSeleccionada, 0);
+                    String apellidos = (String) modeloTabla.getValueAt(filaSeleccionada, 1);
+                    String email = (String) modeloTabla.getValueAt(filaSeleccionada, 2);
+                    String celular = (String) modeloTabla.getValueAt(filaSeleccionada, 3);
+                    String direccion = (String) modeloTabla.getValueAt(filaSeleccionada, 4);
+                    String barrio = (String) modeloTabla.getValueAt(filaSeleccionada, 5);
+                    // Establecer datos en cajas de texto
+                    cajaNombres.setText(nombres);
+                    cajaApellidos.setText(apellidos);
+                    cajaEmail.setText(email);
+                    cajaCelular.setText(celular);
+                    cajaDireccion.setText(direccion);
+                    cajaBarrio.setText(barrio);
+                }
             }
-        ));
+        };
+
+        tabla.getSelectionModel().addListSelectionListener(guardiaSeleccion);
         scrollTabla.setViewportView(tabla);
 
         lblDatosPersona.setFont(new java.awt.Font("Arial Rounded MT Bold", 0, 14)); // NOI18N
@@ -93,24 +130,24 @@ public class Ventana extends javax.swing.JFrame {
         lblNombres.setFont(new java.awt.Font("Arial", 0, 14)); // NOI18N
         lblNombres.setText("Nombres");
 
-        jtxtApellidos.addActionListener(new java.awt.event.ActionListener() {
+        cajaApellidos.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jtxtApellidosActionPerformed(evt);
+                cajaApellidosActionPerformed(evt);
             }
         });
 
         lblApellidos.setFont(new java.awt.Font("Arial", 0, 14)); // NOI18N
         lblApellidos.setText("Apellidos");
 
-        jtxtNombres.addActionListener(new java.awt.event.ActionListener() {
+        cajaNombres.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jtxtNombresActionPerformed(evt);
+                cajaNombresActionPerformed(evt);
             }
         });
 
-        jtxtEmail.addActionListener(new java.awt.event.ActionListener() {
+        cajaEmail.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jtxtEmailActionPerformed(evt);
+                cajaEmailActionPerformed(evt);
             }
         });
 
@@ -120,9 +157,9 @@ public class Ventana extends javax.swing.JFrame {
         lblApellidos1.setFont(new java.awt.Font("Arial", 0, 14)); // NOI18N
         lblApellidos1.setText("Celular");
 
-        jtxtCelular.addActionListener(new java.awt.event.ActionListener() {
+        cajaCelular.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jtxtCelularActionPerformed(evt);
+                cajaCelularActionPerformed(evt);
             }
         });
 
@@ -132,15 +169,15 @@ public class Ventana extends javax.swing.JFrame {
         lblBarrio.setFont(new java.awt.Font("Arial", 0, 14)); // NOI18N
         lblBarrio.setText("Barrio");
 
-        jtxDireccion.addActionListener(new java.awt.event.ActionListener() {
+        cajaDireccion.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jtxDireccionActionPerformed(evt);
+                cajaDireccionActionPerformed(evt);
             }
         });
 
-        jtxtBarrio.addActionListener(new java.awt.event.ActionListener() {
+        cajaBarrio.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jtxtBarrioActionPerformed(evt);
+                cajaBarrioActionPerformed(evt);
             }
         });
 
@@ -156,8 +193,8 @@ public class Ventana extends javax.swing.JFrame {
                         .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                     .addGroup(panelLayout.createSequentialGroup()
                         .addComponent(comboPersonas, javax.swing.GroupLayout.PREFERRED_SIZE, 271, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 64, Short.MAX_VALUE)
-                        .addComponent(btnIsertarPersonas, javax.swing.GroupLayout.PREFERRED_SIZE, 178, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 67, Short.MAX_VALUE)
+                        .addComponent(botonIsertarPersonas, javax.swing.GroupLayout.PREFERRED_SIZE, 178, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addGap(72, 72, 72))
                     .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, panelLayout.createSequentialGroup()
                         .addGroup(panelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
@@ -173,26 +210,26 @@ public class Ventana extends javax.swing.JFrame {
                     .addGroup(panelLayout.createSequentialGroup()
                         .addGroup(panelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addComponent(lblNombres2)
-                            .addComponent(jtxDireccion, javax.swing.GroupLayout.PREFERRED_SIZE, 186, javax.swing.GroupLayout.PREFERRED_SIZE))
+                            .addComponent(cajaDireccion, javax.swing.GroupLayout.PREFERRED_SIZE, 186, javax.swing.GroupLayout.PREFERRED_SIZE))
                         .addGap(49, 49, 49)
                         .addGroup(panelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(jtxtBarrio, javax.swing.GroupLayout.PREFERRED_SIZE, 186, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(cajaBarrio, javax.swing.GroupLayout.PREFERRED_SIZE, 186, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addComponent(lblBarrio)))
                     .addGroup(panelLayout.createSequentialGroup()
                         .addGroup(panelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addComponent(lblNombres1)
-                            .addComponent(jtxtEmail, javax.swing.GroupLayout.PREFERRED_SIZE, 186, javax.swing.GroupLayout.PREFERRED_SIZE))
+                            .addComponent(cajaEmail, javax.swing.GroupLayout.PREFERRED_SIZE, 186, javax.swing.GroupLayout.PREFERRED_SIZE))
                         .addGap(49, 49, 49)
                         .addGroup(panelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(jtxtCelular, javax.swing.GroupLayout.PREFERRED_SIZE, 186, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(cajaCelular, javax.swing.GroupLayout.PREFERRED_SIZE, 186, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addComponent(lblApellidos1)))
                     .addGroup(panelLayout.createSequentialGroup()
                         .addGroup(panelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addComponent(lblNombres)
-                            .addComponent(jtxtNombres, javax.swing.GroupLayout.PREFERRED_SIZE, 186, javax.swing.GroupLayout.PREFERRED_SIZE))
+                            .addComponent(cajaNombres, javax.swing.GroupLayout.PREFERRED_SIZE, 186, javax.swing.GroupLayout.PREFERRED_SIZE))
                         .addGap(49, 49, 49)
                         .addGroup(panelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(jtxtApellidos, javax.swing.GroupLayout.PREFERRED_SIZE, 186, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(cajaApellidos, javax.swing.GroupLayout.PREFERRED_SIZE, 186, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addComponent(lblApellidos))))
                 .addGap(0, 0, Short.MAX_VALUE))
         );
@@ -204,7 +241,7 @@ public class Ventana extends javax.swing.JFrame {
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addGroup(panelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(comboPersonas, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(btnIsertarPersonas))
+                    .addComponent(botonIsertarPersonas))
                 .addGap(46, 46, 46)
                 .addComponent(scrollTabla, javax.swing.GroupLayout.PREFERRED_SIZE, 167, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(18, 18, 18)
@@ -217,25 +254,25 @@ public class Ventana extends javax.swing.JFrame {
                     .addComponent(lblApellidos))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(panelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jtxtApellidos, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jtxtNombres, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                    .addComponent(cajaApellidos, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(cajaNombres, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(23, 23, 23)
                 .addGroup(panelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(lblNombres1)
                     .addComponent(lblApellidos1))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(panelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jtxtCelular, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jtxtEmail, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(29, 29, 29)
+                    .addComponent(cajaCelular, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(cajaEmail, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(18, 18, 18)
                 .addGroup(panelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(lblNombres2)
                     .addComponent(lblBarrio))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(panelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jtxtBarrio, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jtxDireccion, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addContainerGap(132, Short.MAX_VALUE))
+                    .addComponent(cajaBarrio, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(cajaDireccion, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addContainerGap(185, Short.MAX_VALUE))
         );
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
@@ -256,33 +293,44 @@ public class Ventana extends javax.swing.JFrame {
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
-    private void btnIsertarPersonasActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnIsertarPersonasActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_btnIsertarPersonasActionPerformed
+    private void botonIsertarPersonasActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_botonIsertarPersonasActionPerformed
+        // Realizar downcastin de tipo objeto a persona
+        Persona individuo = (Persona) comboPersonas.getSelectedItem();
+        String nombres = individuo.getNombres();
+        String apellidos = individuo.getApellidos();
+        String email = individuo.getEmail();
+        String celular = individuo.getCelular();
+        String direccion = individuo.getDireccion();
+        String barrio = individuo.getBarrio();
+        // Crear arreglo con los datos
+        String[] persona = {nombres, apellidos, email, celular, direccion, barrio};
+        // Almacenar objeto como fila
+        modeloTabla.addRow(persona);
+    }//GEN-LAST:event_botonIsertarPersonasActionPerformed
 
-    private void jtxtApellidosActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jtxtApellidosActionPerformed
+    private void cajaApellidosActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cajaApellidosActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_jtxtApellidosActionPerformed
+    }//GEN-LAST:event_cajaApellidosActionPerformed
 
-    private void jtxtNombresActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jtxtNombresActionPerformed
+    private void cajaNombresActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cajaNombresActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_jtxtNombresActionPerformed
+    }//GEN-LAST:event_cajaNombresActionPerformed
 
-    private void jtxtEmailActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jtxtEmailActionPerformed
+    private void cajaEmailActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cajaEmailActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_jtxtEmailActionPerformed
+    }//GEN-LAST:event_cajaEmailActionPerformed
 
-    private void jtxtCelularActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jtxtCelularActionPerformed
+    private void cajaCelularActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cajaCelularActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_jtxtCelularActionPerformed
+    }//GEN-LAST:event_cajaCelularActionPerformed
 
-    private void jtxDireccionActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jtxDireccionActionPerformed
+    private void cajaDireccionActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cajaDireccionActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_jtxDireccionActionPerformed
+    }//GEN-LAST:event_cajaDireccionActionPerformed
 
-    private void jtxtBarrioActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jtxtBarrioActionPerformed
+    private void cajaBarrioActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cajaBarrioActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_jtxtBarrioActionPerformed
+    }//GEN-LAST:event_cajaBarrioActionPerformed
 
     /**
      * @param args the command line arguments
@@ -320,16 +368,16 @@ public class Ventana extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JButton btnIsertarPersonas;
-    private javax.swing.JComboBox<String> comboPersonas;
+    private javax.swing.JButton botonIsertarPersonas;
+    private javax.swing.JTextField cajaApellidos;
+    private javax.swing.JTextField cajaBarrio;
+    private javax.swing.JTextField cajaCelular;
+    private javax.swing.JTextField cajaDireccion;
+    private javax.swing.JTextField cajaEmail;
+    private javax.swing.JTextField cajaNombres;
+    private javax.swing.JComboBox<Persona> comboPersonas;
     private javax.swing.JLabel etiquetaPersona;
     private javax.swing.JSeparator jSeparator1;
-    private javax.swing.JTextField jtxDireccion;
-    private javax.swing.JTextField jtxtApellidos;
-    private javax.swing.JTextField jtxtBarrio;
-    private javax.swing.JTextField jtxtCelular;
-    private javax.swing.JTextField jtxtEmail;
-    private javax.swing.JTextField jtxtNombres;
     private javax.swing.JLabel lblApellidos;
     private javax.swing.JLabel lblApellidos1;
     private javax.swing.JLabel lblBarrio;
@@ -341,5 +389,4 @@ public class Ventana extends javax.swing.JFrame {
     private javax.swing.JScrollPane scrollTabla;
     private javax.swing.JTable tabla;
     // End of variables declaration//GEN-END:variables
-
 }

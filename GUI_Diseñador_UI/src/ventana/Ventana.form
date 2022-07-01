@@ -3,9 +3,6 @@
 <Form version="1.3" maxVersion="1.9" type="org.netbeans.modules.form.forminfo.JFrameFormInfo">
   <Properties>
     <Property name="defaultCloseOperation" type="int" value="3"/>
-    <Property name="preferredSize" type="java.awt.Dimension" editor="org.netbeans.beaninfo.editors.DimensionEditor">
-      <Dimension value="[600, 700]"/>
-    </Property>
   </Properties>
   <SyntheticProperties>
     <SyntheticProperty name="formSizePolicy" type="int" value="1"/>
@@ -61,8 +58,8 @@
                       </Group>
                       <Group type="102" alignment="0" attributes="0">
                           <Component id="comboPersonas" min="-2" pref="271" max="-2" attributes="0"/>
-                          <EmptySpace pref="64" max="32767" attributes="0"/>
-                          <Component id="btnIsertarPersonas" min="-2" pref="178" max="-2" attributes="0"/>
+                          <EmptySpace pref="67" max="32767" attributes="0"/>
+                          <Component id="botonIsertarPersonas" min="-2" pref="178" max="-2" attributes="0"/>
                           <EmptySpace min="-2" pref="72" max="-2" attributes="0"/>
                       </Group>
                       <Group type="102" alignment="1" attributes="0">
@@ -84,33 +81,33 @@
                       <Group type="102" attributes="0">
                           <Group type="103" groupAlignment="0" attributes="0">
                               <Component id="lblNombres2" alignment="0" min="-2" max="-2" attributes="0"/>
-                              <Component id="jtxDireccion" alignment="0" min="-2" pref="186" max="-2" attributes="0"/>
+                              <Component id="cajaDireccion" alignment="0" min="-2" pref="186" max="-2" attributes="0"/>
                           </Group>
                           <EmptySpace min="-2" pref="49" max="-2" attributes="0"/>
                           <Group type="103" groupAlignment="0" attributes="0">
-                              <Component id="jtxtBarrio" alignment="0" min="-2" pref="186" max="-2" attributes="0"/>
+                              <Component id="cajaBarrio" alignment="0" min="-2" pref="186" max="-2" attributes="0"/>
                               <Component id="lblBarrio" alignment="0" min="-2" max="-2" attributes="0"/>
                           </Group>
                       </Group>
                       <Group type="102" attributes="0">
                           <Group type="103" groupAlignment="0" attributes="0">
                               <Component id="lblNombres1" alignment="0" min="-2" max="-2" attributes="0"/>
-                              <Component id="jtxtEmail" alignment="0" min="-2" pref="186" max="-2" attributes="0"/>
+                              <Component id="cajaEmail" alignment="0" min="-2" pref="186" max="-2" attributes="0"/>
                           </Group>
                           <EmptySpace min="-2" pref="49" max="-2" attributes="0"/>
                           <Group type="103" groupAlignment="0" attributes="0">
-                              <Component id="jtxtCelular" alignment="0" min="-2" pref="186" max="-2" attributes="0"/>
+                              <Component id="cajaCelular" alignment="0" min="-2" pref="186" max="-2" attributes="0"/>
                               <Component id="lblApellidos1" alignment="0" min="-2" max="-2" attributes="0"/>
                           </Group>
                       </Group>
                       <Group type="102" attributes="0">
                           <Group type="103" groupAlignment="0" attributes="0">
                               <Component id="lblNombres" min="-2" max="-2" attributes="0"/>
-                              <Component id="jtxtNombres" alignment="0" min="-2" pref="186" max="-2" attributes="0"/>
+                              <Component id="cajaNombres" alignment="0" min="-2" pref="186" max="-2" attributes="0"/>
                           </Group>
                           <EmptySpace min="-2" pref="49" max="-2" attributes="0"/>
                           <Group type="103" groupAlignment="0" attributes="0">
-                              <Component id="jtxtApellidos" min="-2" pref="186" max="-2" attributes="0"/>
+                              <Component id="cajaApellidos" min="-2" pref="186" max="-2" attributes="0"/>
                               <Component id="lblApellidos" min="-2" max="-2" attributes="0"/>
                           </Group>
                       </Group>
@@ -127,7 +124,7 @@
                   <EmptySpace type="unrelated" max="-2" attributes="0"/>
                   <Group type="103" groupAlignment="3" attributes="0">
                       <Component id="comboPersonas" alignment="3" min="-2" max="-2" attributes="0"/>
-                      <Component id="btnIsertarPersonas" alignment="3" min="-2" max="-2" attributes="0"/>
+                      <Component id="botonIsertarPersonas" alignment="3" min="-2" max="-2" attributes="0"/>
                   </Group>
                   <EmptySpace min="-2" pref="46" max="-2" attributes="0"/>
                   <Component id="scrollTabla" min="-2" pref="167" max="-2" attributes="0"/>
@@ -142,30 +139,30 @@
                   </Group>
                   <EmptySpace max="-2" attributes="0"/>
                   <Group type="103" groupAlignment="3" attributes="0">
-                      <Component id="jtxtApellidos" alignment="3" min="-2" max="-2" attributes="0"/>
-                      <Component id="jtxtNombres" alignment="3" min="-2" max="-2" attributes="0"/>
+                      <Component id="cajaApellidos" alignment="3" min="-2" max="-2" attributes="0"/>
+                      <Component id="cajaNombres" alignment="3" min="-2" max="-2" attributes="0"/>
                   </Group>
-                  <EmptySpace type="unrelated" max="-2" attributes="0"/>
+                  <EmptySpace min="-2" pref="23" max="-2" attributes="0"/>
                   <Group type="103" groupAlignment="3" attributes="0">
                       <Component id="lblNombres1" alignment="3" min="-2" max="-2" attributes="0"/>
                       <Component id="lblApellidos1" alignment="3" min="-2" max="-2" attributes="0"/>
                   </Group>
                   <EmptySpace max="-2" attributes="0"/>
                   <Group type="103" groupAlignment="3" attributes="0">
-                      <Component id="jtxtCelular" alignment="3" min="-2" max="-2" attributes="0"/>
-                      <Component id="jtxtEmail" alignment="3" min="-2" max="-2" attributes="0"/>
+                      <Component id="cajaCelular" alignment="3" min="-2" max="-2" attributes="0"/>
+                      <Component id="cajaEmail" alignment="3" min="-2" max="-2" attributes="0"/>
                   </Group>
-                  <EmptySpace min="-2" pref="29" max="-2" attributes="0"/>
+                  <EmptySpace type="separate" max="-2" attributes="0"/>
                   <Group type="103" groupAlignment="3" attributes="0">
                       <Component id="lblNombres2" alignment="3" min="-2" max="-2" attributes="0"/>
                       <Component id="lblBarrio" alignment="3" min="-2" max="-2" attributes="0"/>
                   </Group>
                   <EmptySpace max="-2" attributes="0"/>
                   <Group type="103" groupAlignment="3" attributes="0">
-                      <Component id="jtxtBarrio" alignment="3" min="-2" max="-2" attributes="0"/>
-                      <Component id="jtxDireccion" alignment="3" min="-2" max="-2" attributes="0"/>
+                      <Component id="cajaBarrio" alignment="3" min="-2" max="-2" attributes="0"/>
+                      <Component id="cajaDireccion" alignment="3" min="-2" max="-2" attributes="0"/>
                   </Group>
-                  <EmptySpace pref="132" max="32767" attributes="0"/>
+                  <EmptySpace pref="185" max="32767" attributes="0"/>
               </Group>
           </Group>
         </DimensionLayout>
@@ -186,10 +183,10 @@
             </Property>
           </Properties>
           <AuxValues>
-            <AuxValue name="JavaCodeGenerator_TypeParameters" type="java.lang.String" value="&lt;String&gt;"/>
+            <AuxValue name="JavaCodeGenerator_TypeParameters" type="java.lang.String" value="&lt;Persona&gt;"/>
           </AuxValues>
         </Component>
-        <Component class="javax.swing.JButton" name="btnIsertarPersonas">
+        <Component class="javax.swing.JButton" name="botonIsertarPersonas">
           <Properties>
             <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
               <Font name="Arial" size="12" style="0"/>
@@ -197,7 +194,7 @@
             <Property name="text" type="java.lang.String" value="Insertar Persona"/>
           </Properties>
           <Events>
-            <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="btnIsertarPersonasActionPerformed"/>
+            <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="botonIsertarPersonasActionPerformed"/>
           </Events>
         </Component>
         <Container class="javax.swing.JScrollPane" name="scrollTabla">
@@ -209,15 +206,13 @@
           <SubComponents>
             <Component class="javax.swing.JTable" name="tabla">
               <Properties>
-                <Property name="model" type="javax.swing.table.TableModel" editor="org.netbeans.modules.form.editors2.TableModelEditor">
-                  <Table columnCount="4" rowCount="4">
-                    <Column editable="true" title="Title 1" type="java.lang.Object"/>
-                    <Column editable="true" title="Title 2" type="java.lang.Object"/>
-                    <Column editable="true" title="Title 3" type="java.lang.Object"/>
-                    <Column editable="true" title="Title 4" type="java.lang.Object"/>
-                  </Table>
+                <Property name="model" type="javax.swing.table.TableModel" editor="org.netbeans.modules.form.RADConnectionPropertyEditor">
+                  <Connection code="modeloTabla" type="code"/>
                 </Property>
               </Properties>
+              <AuxValues>
+                <AuxValue name="JavaCodeGenerator_InitCodePost" type="java.lang.String" value="ListSelectionListener guardiaSeleccion = new ListSelectionListener(){&#xa;    @Override&#xa;    public void valueChanged(ListSelectionEvent e){&#xa;        if (e.getValueIsAdjusting()){&#xa;            int filaSeleccionada = tabla.getSelectedRow();&#xa;            // Guardar datos&#xa;            String nombres = (String) modeloTabla.getValueAt(filaSeleccionada, 0);&#xa;            String apellidos = (String) modeloTabla.getValueAt(filaSeleccionada, 1);&#xa;            String email = (String) modeloTabla.getValueAt(filaSeleccionada, 2);&#xa;            String celular = (String) modeloTabla.getValueAt(filaSeleccionada, 3);&#xa;            String direccion = (String) modeloTabla.getValueAt(filaSeleccionada, 4);&#xa;            String barrio = (String) modeloTabla.getValueAt(filaSeleccionada, 5);&#xa;            // Establecer datos en cajas de texto&#xa;            cajaNombres.setText(nombres);&#xa;            cajaApellidos.setText(apellidos);&#xa;            cajaEmail.setText(email);&#xa;            cajaCelular.setText(celular);&#xa;            cajaDireccion.setText(direccion);&#xa;            cajaBarrio.setText(barrio);&#xa;        }        &#xa;    }&#xa;};&#xa;&#xa;tabla.getSelectionModel().addListSelectionListener(guardiaSeleccion);&#xa;"/>
+              </AuxValues>
             </Component>
           </SubComponents>
         </Container>
@@ -239,9 +234,9 @@
             <Property name="text" type="java.lang.String" value="Nombres"/>
           </Properties>
         </Component>
-        <Component class="javax.swing.JTextField" name="jtxtApellidos">
+        <Component class="javax.swing.JTextField" name="cajaApellidos">
           <Events>
-            <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="jtxtApellidosActionPerformed"/>
+            <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="cajaApellidosActionPerformed"/>
           </Events>
         </Component>
         <Component class="javax.swing.JLabel" name="lblApellidos">
@@ -252,14 +247,14 @@
             <Property name="text" type="java.lang.String" value="Apellidos"/>
           </Properties>
         </Component>
-        <Component class="javax.swing.JTextField" name="jtxtNombres">
+        <Component class="javax.swing.JTextField" name="cajaNombres">
           <Events>
-            <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="jtxtNombresActionPerformed"/>
+            <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="cajaNombresActionPerformed"/>
           </Events>
         </Component>
-        <Component class="javax.swing.JTextField" name="jtxtEmail">
+        <Component class="javax.swing.JTextField" name="cajaEmail">
           <Events>
-            <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="jtxtEmailActionPerformed"/>
+            <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="cajaEmailActionPerformed"/>
           </Events>
         </Component>
         <Component class="javax.swing.JLabel" name="lblNombres1">
@@ -278,9 +273,9 @@
             <Property name="text" type="java.lang.String" value="Celular"/>
           </Properties>
         </Component>
-        <Component class="javax.swing.JTextField" name="jtxtCelular">
+        <Component class="javax.swing.JTextField" name="cajaCelular">
           <Events>
-            <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="jtxtCelularActionPerformed"/>
+            <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="cajaCelularActionPerformed"/>
           </Events>
         </Component>
         <Component class="javax.swing.JLabel" name="lblNombres2">
@@ -299,14 +294,14 @@
             <Property name="text" type="java.lang.String" value="Barrio"/>
           </Properties>
         </Component>
-        <Component class="javax.swing.JTextField" name="jtxDireccion">
+        <Component class="javax.swing.JTextField" name="cajaDireccion">
           <Events>
-            <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="jtxDireccionActionPerformed"/>
+            <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="cajaDireccionActionPerformed"/>
           </Events>
         </Component>
-        <Component class="javax.swing.JTextField" name="jtxtBarrio">
+        <Component class="javax.swing.JTextField" name="cajaBarrio">
           <Events>
-            <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="jtxtBarrioActionPerformed"/>
+            <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="cajaBarrioActionPerformed"/>
           </Events>
         </Component>
       </SubComponents>
